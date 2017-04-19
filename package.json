@@ -1,0 +1,38 @@
+{
+  "name": "vue-components",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Vue Components for Behance",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:behance/vue-components.git"
+  },
+  "scripts": {
+    "eslint": "eslint packages/**/src/*.vue",
+    "stylelint": "stylelint 'packages/**/src/*.vue'",
+    "test": "npm run eslint && npm run stylelint",
+    "reset": "lerna clean && lerna bootstrap"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-behance": "8.0.0",
+    "css-loader": "^0.28.0",
+    "eslint": "~3.4.0",
+    "eslint-plugin-behance": "^1.1.0",
+    "eslint-plugin-vue": "^2.0.1",
+    "eslint-preset-behance": "^6.0.0",
+    "lerna": "^2.0.0-rc.3",
+    "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.3",
+    "scss-loader": "0.0.1",
+    "stylelint": "^7.6.0",
+    "stylelint-preset-behance": "^1.0.0",
+    "vue-loader": "^11.3.4",
+    "vue-template-compiler": "^2.2.6"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  }
+}

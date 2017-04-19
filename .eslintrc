@@ -1,0 +1,8 @@
+{
+  "root": true,
+  "extends": "./node_modules/eslint-preset-behance/.eslintrc",
+  "env": {
+    "browser": true
+  },
+  "plugins": [ "vue" ]
+}
