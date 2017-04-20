@@ -4,28 +4,27 @@ import 'jquery';
 import 'jasmine-jquery';
 
 describe('Spinner', function() {
-  const fixtureClass = 'js-fixture';
-  const fixtureSelector = `.${fixtureClass}`;
-
-  beforeEach(function() {
-    setFixtures(`<div class="${fixtureClass}"></div>`);
-    this.spinner = new Vue(Spinner).$mount(fixtureSelector);
-  });
-
+  const fixture = setFixtures(`<div class=".js-fixture"></div>`);
+  
   afterEach(function() {
-    this.spinner.$destroy();
+    this.spin.$destroy();
   });
 
-  it('should show only the progress state when no label has been defined in props.', function() {
-    expect(typeof this.spinner.$refs.text).toBe('undefined');
+  function mountSpinnerInstance(propsData = {}) {
+    const ExtSpin = Vue.extend(Spinner);
+    const extSpin = new ExtSpin({ propsData });
+    extSpin.$mount(fixture[0]);
+    return extSpin;
+  };
+
+  it('should show only the progress state when no "text" has been defined in props.', function() {
+    this.spin = mountSpinnerInstance();
+    expect(typeof this.spin.$refs.text).toBe('undefined');
   });
 
-  it('should render a label when it has been defined in props.', function(doneAsync) {
-    const exampleText = 'Some great informational text';
-    this.spinner.$on('updated', function() {
-      expect(this.$refs.text.innerText).toBe(exampleText);
-      doneAsync();
-    });
-    this.spinner.text = exampleText;
+  it('should render "text" (as a label) when it has been defined in props.', function() {
+    const text = 'Some great informational text';
+    this.spin = mountSpinnerInstance({ text });
+    expect(this.spin.$refs.text.innerText).toBe(text);
   });
 });
