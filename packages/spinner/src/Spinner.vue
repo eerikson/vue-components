@@ -13,10 +13,7 @@
         type: String,
         required: false,
       },
-    },
-    updated() {
-      this.$emit('updated');
-    },
+    }
   };
 </script>
 
